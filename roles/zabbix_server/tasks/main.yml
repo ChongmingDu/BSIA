@@ -1,0 +1,32 @@
+---
+- name: "Install zabbix repo"
+  yum:
+    name: https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-1.el7.noarch.rpm
+    state: present
+
+- name: "Install zabbix packages"
+  yum:
+    name: "{{ zabbix_server_packages }}"
+    state: latest
+
+- name: "copy mysql shell script"
+  copy:
+    src: zabbix_db.sh
+    dest: /tmp/zabbix.sh
+
+- name: "run mysql shell script"
+  shell: "/bin/bash /tmp/zabbix.sh"
+
+- name: "move templates to zabbix server"
+  template:
+    src: zabbix_server.conf
+    dest: "{{ zbwork }}/zabbix_server.conf"
+  notify:
+    - restart zabbix-server
+
+- name: "run zabbix web"
+  template:
+    src: zabbix.conf
+    dest: /etc/httpd/conf.d/zabbix.conf
+  notify:
+    - restart httpd

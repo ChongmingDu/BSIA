@@ -1,0 +1,26 @@
+---
+- name: "Initialization OS shell"
+  copy:
+   src: init.sh
+   dest: /tmp/init.sh
+
+- name: "Initialization OS"
+  shell: /bin/bash /tmp/init.sh
+
+- name: "Add to tomcat user"
+  user:
+    name: tomcat
+    shell: /bin/bash
+    password: 1q2w3e4r
+    remove: yes
+
+- name: "Install git 2.9.5"
+  get_url:
+      url: https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.9.5.tar.xz
+      dest: "{{ software }}/"
+
+- name: "unzip git tar"
+  shell: "cd /usr/local/;tar -xvf git-2.9.5.tar.xz"
+
+- name: "Install git"
+  shell: "cd /usr/local/git-2.9.5/;./configure --prefix=/usr &>/dev/null;make -j 4&& make install &>/dev/null"

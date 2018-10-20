@@ -1,0 +1,20 @@
+---
+#software dir
+software: /usr/local
+
+#nginx work dir
+ngwork: /usr/local/nginx/conf/conf.d
+
+#zabbix packages
+zabbix_server_packages:
+  - zabbix-server-mysql
+  - zabbix-web-mysql
+zabbix_agent_packages:
+  - zabbix-agent
+
+#mysql args
+login_password: 1q2w3e4r
+mysql_port: 3306
+
+#zabbix work dir
+zbwork: /etc/zabbix

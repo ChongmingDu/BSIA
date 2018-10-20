@@ -1,0 +1,9 @@
+[local]
+local1
+
+[zabbix_server]
+web1
+
+[zabbix_agent]
+agent1:19221
+agent219221

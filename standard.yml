@@ -1,0 +1,11 @@
+---
+- name: Aliyun ansible-playbook  
+  hosts: all
+  remote_user: root
+  
+  vars_files:
+    - var/main.yml
+  
+  roles:
+    - base
+    - nginx
