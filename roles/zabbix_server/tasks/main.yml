@@ -30,3 +30,15 @@
     dest: /etc/httpd/conf.d/zabbix.conf
   notify:
     - restart httpd
+
+- name: "copy dingding robot python script"
+  copy:
+      src: dingdingrobot.py
+      dest: /usr/lib/zabbix/alertscripts/dingdingrobot.py
+
+- name: "run dingding robot python script"
+  file:
+      path: /usr/lib/zabbix/alertscripts/dingdingrobot.py
+      owner: zabbix
+      group: zabbix
+      mode: 0775
