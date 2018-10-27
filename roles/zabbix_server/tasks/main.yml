@@ -33,12 +33,24 @@
 
 - name: "copy dingding robot python script"
   copy:
-      src: dingdingrobot.py
-      dest: /usr/lib/zabbix/alertscripts/dingdingrobot.py
+    src: dingdingrobot.py
+    dest: "{{ zbscript }}/dingdingrobot.py"
 
 - name: "run dingding robot python script"
   file:
-      path: /usr/lib/zabbix/alertscripts/dingdingrobot.py
-      owner: zabbix
-      group: zabbix
-      mode: 0775
+    path: "{{ zbscript }}/dingdingrobot.py"
+    owner: zabbix
+    group: zabbix
+    mode: 0775
+
+- name: "copy Wechat robot python script"
+  copy:
+    src: wechatrobot.py
+    dest: "{{ zbscript }}/wechatrobot.py"
+
+- name: "run wechat robot python script"
+  file:
+    path: "{{ zbscript }}/wechatrobot.py"
+    owner: zabbix
+    group: zabbix
+    mode: 0775
