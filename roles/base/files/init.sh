@@ -52,15 +52,3 @@ sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/cen
 sudo yum makecache fast
 sudo yum install  docker-ce-17.12.1.ce-1.el7.centos -y
 systemctl start docker&&systemctl enable docker
-
-# Install mongod4
-# cat << EOF > /etc/yum.repos.d/mongo4.repo
-# [mongodb-org-4.0]
-# name=MongoDB Repository
-# baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.0/x86_64/
-# gpgcheck=1
-# enabled=1
-# gpgkey=https://www.mongodb.org/static/pgp/server-4.0.asc
-# EOF
-# sudo yum install -y mongodb-org &>/dev/null
-# systemctl start mongod.service&&systemctl enable mongod.service
