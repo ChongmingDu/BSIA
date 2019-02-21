@@ -1,0 +1,19 @@
+---
+- name: "downloads redis server"
+  get_url:
+    url: http://download.redis.io/releases/redis-5.0.3.tar.gz
+    dest: "{{ software }}/"
+
+- name: "unzip redis tar"
+  shell: "tar xzf /usr/local/redis-5.0.3.tar.gz -C /usr/local/"
+
+- name: "make redis"
+  shell: "cd /usr/local/redis-5.0.3;make"
+
+- name: "copy redis conf templates"
+  template:
+    src: redis.conf
+    dest: /etc/redis.conf
+
+- name: "run redis server"
+  shell: "nohup /usr/local/redis-5.0.3/src/redis-server  /etc/redis.conf &"

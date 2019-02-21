@@ -1,0 +1,8 @@
+---
+- name: "add mongo repo"
+  copy:
+    src: mongo4.repo
+    dest: /etc/yum.repos.d/mongo4.repo
+
+- name: "install mongo"
+  shell: yum install mongodb-org -y    

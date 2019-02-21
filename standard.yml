@@ -9,3 +9,7 @@
   roles:
     - base
     - nginx
+    - zabbix_agent
+    - filebeat
+    - redis
+    - mongodb
