@@ -1,22 +1,22 @@
 ---
 - name: "Downloads nginx server"
   get_url: 
-   url: http://tengine.taobao.org/download/tengine-2.2.2.tar.gz 
+   url: https://nginx.org/download/nginx-1.14.2.tar.gz 
    dest: "{{ software }}/"
 
 #local file 
 # - name: "unzip nginx bar"
 #   synchronize:
-#    src: “{{ software }}/tengine-2.2.2.tar.gz”
+#    src: “{{ software }}/nginx-1.14.2.tar.gz”
 #    dest: "{{ software }}/"
 
 #remove file
 - name: "unzip nginx bar"
   shell:
-    "tar -xzf /usr/local/tengine-2.2.2.tar.gz -C /usr/local/"
+    "tar -xzf /usr/local/nginx-1.14.2.tar.gz -C /usr/local/"
 
 - name: "install nginx"
-  shell: cd /usr/local/tengine-2.2.2;./configure --prefix=/usr/local/nginx --user=nginx --group=nginx --with-http_ssl_module --with-http_realip_module --with-http_image_filter_module --with-http_gzip_static_module --with-http_stub_status_module --http-log-path=/data/logs/nginx/access.log --error-log-path=/data/logs/nginx/error.log &>/dev/null;make -j 4&&make install
+  shell: cd /usr/local/nginx-1.14.2;./configure --prefix=/usr/local/nginx --user=nginx --group=nginx --with-http_ssl_module --with-http_realip_module --with-http_image_filter_module --with-http_gzip_static_module --with-http_stub_status_module --http-log-path=/data/logs/nginx/access.log --error-log-path=/data/logs/nginx/error.log &>/dev/null;make -j 4&&make install
 
 - name: "link nginx bin"
   file:
