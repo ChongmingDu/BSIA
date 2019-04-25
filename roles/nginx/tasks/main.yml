@@ -50,7 +50,7 @@
     dest: /usr/local/nginx/conf/nginx.conf
 
 - name: "start nginx"
-  shell: /usr/local/nginx/sbin/nginx -s start
+  shell: "/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf"
 
 - name: "templates nginx examples.conf"
   template:

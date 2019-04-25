@@ -5,7 +5,7 @@
 ## Base
 Base模块主要初始化了新系统的一些参数（需要的包以及kernel调优参数）和中间件的安装。
 
-### Base内容
+### Base role内容
 * openjdk 1.8
 * docker 17.12.1-ce
 * git 2.9.5
@@ -37,6 +37,12 @@ Zabbix server role配置了zabbix server的基本配置(需要手动的配置参
 ### Zabbix_agent role内容
 * zabbix agent 4.0
 
+## Zookeeper
+Zookeeper模块初始化了zk单点配置及基本的配置模版
+
+### Zookeeper role内容
+* zookeeper 3.4.9
+
 * * *
 
 ## 使用
@@ -44,6 +50,6 @@ Zabbix server role配置了zabbix server的基本配置(需要手动的配置参
     1. 修改host.yml.examples中内容为远程主机公网地址，并重命名此文件为host.yml
     2. 修改roles/nginx/templates/examples.conf或roles/nginx/templates/examplesadmin.conf内容，把文中“examples”替换成需要的URL。其中，roles/nginx/templates/examples.conf适合前后分离的web环境。
     3. 如果使用zabbix role。请修改变量 roles/zabbix_server/templates/zabbix_server.conf（DB开头的三个变量），roles/zabbix_agent/templates/zabbix_agentd.conf（Server变量），roles/zabbix_server/files/zabbix_db.sh（mysql的变量），var/main.yml（mysql args变量）
-    4. 运行 ansible-playbook -i host.yml  -u root standard.yml
+    4. 运行 ansible-playbook -i host.yml  -u root standard.yml(默认全部role都开启)
     5. 如果使用zabbix role 请运行: ansible-playbook -i host.yml  -u root zabbix.yml
 ```
